@@ -1,13 +1,17 @@
-import type { Route } from "./+types/home";
-import { Landing } from "~/pages/landing";
 
-export function meta({}: Route.MetaArgs) {
+import { LandingPage } from "~/pages/landing";
+import type { Route } from "./+types/home";
+
+
+export function meta({ }: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Proffice" },
+    { name: "description", content: "Organizational platform for teachers!" },
   ];
 }
 
-export default function Home() {
-  return <Landing />;
+export default function Index() {
+  return (
+    <LandingPage/>
+  );
 }
