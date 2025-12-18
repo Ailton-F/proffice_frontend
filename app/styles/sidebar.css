@@ -49,6 +49,12 @@
   color: #ffffff;
 }
 
+.sidebar-menu li.active a {
+  background-color: #4a5568; /* A different shade for active */
+  color: #ffffff;
+  font-weight: bold;
+}
+
 .sidebar-toggle {
   position: fixed;
   top: 15px;

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import '../styles/sidebar.css';
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 
-const Sidebar = () => {
+export const Sidebar: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
   const { user } = useAuth(); // Assuming useAuth provides user info
+  const location = useLocation();
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,7 +30,7 @@ const Sidebar = () => {
   const sidebarItems = [
     { name: 'Dashboard', path: '/dashboard', icon: 'home' },
     { name: 'Class Plans', path: '/class-plans', icon: 'plan' },
-    { name: 'Calendar', path: '/calendar', icon: 'calendar' },
+    { name: 'Schedule', path: '/calendar', icon: 'calendar' },
     { name: 'Profile', path: '/profile', icon: 'user' },
   ];
 
@@ -60,14 +61,20 @@ const Sidebar = () => {
         </div>
         <nav>
           <ul className="sidebar-menu">
-            {sidebarItems.map((item, index) => (
-              <li key={index}>
-                <Link to={item.path} className="flex items-center">
-                  <i className={`fi fi-rs-${item.icon} mr-3`}></i>
-                  <span className="mr-3">{item.name}</span>
-                </Link>
-              </li>
-            ))}
+            {sidebarItems.map((item, index) => {
+              const isActive = location.pathname === item.path;
+              return (
+                <li key={index} className={isActive ? 'active' : ''}>
+                  <Link
+                    to={item.path}
+                    className={`flex items-center ${isActive ? 'pointer-events-none' : ''}`}
+                  >
+                    <i className={`fi fi-rs-${item.icon} mr-3`}></i>
+                    <span className="mr-3">{item.name}</span>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </div>
@@ -75,4 +82,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+

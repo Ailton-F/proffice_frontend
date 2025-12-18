@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Sidebar from '../components/Sidebar';
+import { Sidebar } from '../components/Sidebar';
 import '../styles/dashboard.css';
 
-const Dashboard = () => {
+export const Dashboard: React.FC = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
 
     useEffect(() => {
@@ -26,4 +26,3 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;

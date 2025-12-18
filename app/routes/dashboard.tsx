@@ -1,6 +1,6 @@
 import type { Route } from '../+types/root';
 import '../styles/dashboard.css';
-import Dashboard from '~/pages/dashboard';
+import { Dashboard } from '~/pages/dashboard';
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -9,8 +9,11 @@ export function meta({ }: Route.MetaArgs) {
   ];
 }
 
-const DashboardPage = () => {
+export const loader = () => {
+  return {};
+}
+
+export default function DashboardPage() {
   return <Dashboard/>
 };
 
-export default DashboardPage;

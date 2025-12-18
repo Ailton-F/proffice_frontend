@@ -5,6 +5,10 @@ interface User {
   id: number;
   name: string;
   email: string;
+  plan: string;
+  avatar: string;
+  phone: string;
+  accepts_whatsapp: boolean;
   // Add other user properties as needed
 }
 
